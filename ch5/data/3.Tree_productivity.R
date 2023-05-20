@@ -23,11 +23,11 @@ library(rpart.plot)
 prp(tree.prod, type=4, extra=1, digits=2, box.palette="Grays")
 
 # Pruning with c-s.e.
-cps = printcp(tree.prod)
-k = which.min(cps[,"xerror"])
-err = cps[k,"xerror"]; se = cps[k,"xstd"]
-c = 1 # 1-s.e.
-k1 = which(cps[,"xerror"] <= err+c*se)[1]
+cps -> printcp(tree.prod)
+k -> which.min(cps[,"xerror"])
+err -> cps[k,"xerror"]; se -> cps[k,"xstd"]
+c -> 1 # 1-s.e.
+k1 -> which(cps[,"xerror"] <= err+c*se)[1]
 cp.chosen = cps[k1,"CP"]
 tree.pruned.prod = prune(tree.prod, cp=cp.chosen)
 print(tree.pruned.prod)
