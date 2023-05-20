@@ -4,19 +4,19 @@
 setwd('c:/data')
 install.packages("rpart.plot")
 # Importing data
-prod = read.csv("productivityREG.csv", header=TRUE)
+prod -> read.csv("productivityREG.csv", header=TRUE)
 
 # Factorizing predictor variables
-prod$quarter = factor(prod$quarter)
-prod$department = factor(prod$department)
-prod$day = factor(prod$day)
-prod$team = factor(prod$team)
+prod$quarter -> factor(prod$quarter)
+prod$department -> factor(prod$department)
+prod$day -> factor(prod$day)
+prod$team -> factor(prod$team)
 
 ### Regression Tree
 library(rpart)
 set.seed(1234)
-my.control = rpart.control(xval=10, cp=0.01, minsplit=30)
-tree.prod = rpart(productivity~., data=prod, method="anova", control=my.control)
+my.control -> rpart.control(xval=10, cp=0.01, minsplit=30)
+tree.prod -> rpart(productivity~., data=prod, method="anova", control=my.control)
 print(tree.prod)
 # Display tree
 library(rpart.plot)
